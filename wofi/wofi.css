@@ -1,73 +1,85 @@
-@define-color	selected-text  #fabd2f;
-@define-color	text  #ebdbb2;
-@define-color	base  #282828;
-
 * {
-  font-family: 'CaskaydiaMono Nerd Font', monospace;
-  font-size: 18px;
+  font-family: 'JetBrainsMono Nerd Font', monospace;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 window {
   margin: 0px;
-  padding: 20px;
-  background-color: @base;
-  opacity: 0.95;
+  padding: 0px;
+  border: 1px solid rgba(205, 214, 244, 0.2);
+  background-color: rgba(30, 30, 46, 0.95);
+  border-radius: 12px;
 }
 
 #inner-box {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: @base;
+  background-color: transparent;
 }
 
 #outer-box {
   margin: 0;
-  padding: 20px;
+  padding: 16px;
   border: none;
-  background-color: @base;
+  background-color: transparent;
 }
 
 #scroll {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: @base;
+  background-color: transparent;
 }
 
 #input {
-  margin: 0;
-  padding: 10px;
-  border: none;
-  background-color: @base;
-  color: @text;
+  margin: 0 0 12px 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  background-color: rgba(49, 50, 68, 0.6);
+  color: #cdd6f4;
+  border-radius: 8px;
 }
 
 #input:focus {
   outline: none;
   box-shadow: none;
-  border: none;
+  border: 1px solid rgba(116, 199, 236, 0.5);
+  background-color: rgba(49, 50, 68, 0.8);
 }
 
 #text {
-  margin: 5px;
+  margin: 0;
+  padding: 0;
   border: none;
-  color: @text;
+  color: #cdd6f4;
 }
 
 #entry {
-  background-color: @base;
+  background-color: transparent;
+  border-radius: 8px;
+  margin: 2px 0;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+}
+
+#entry:hover {
+  background-color: rgba(49, 50, 68, 0.4);
+  border: 1px solid rgba(205, 214, 244, 0.1);
 }
 
 #entry:selected {
   outline: none;
-  border: none;
+  border: 1px solid rgba(116, 199, 236, 0.5);
+  background-color: rgba(116, 199, 236, 0.2);
 }
 
 #entry:selected #text {
-  color: @selected-text;
+  color: #74c7ec;
 }
 
 #entry image {
-  -gtk-icon-transform: scale(0.7);
+  margin-right: 8px;
+  -gtk-icon-transform: scale(0.8);
 }
