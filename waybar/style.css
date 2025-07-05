@@ -3,17 +3,53 @@
   border-radius: 0;
   min-height: 0;
   font-family: 'JetBrainsMono Nerd Font';
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background: rgba(30, 30, 46, 0.9);
+  border-radius: 12px;
+  margin: 8px 12px 0px 12px;
+  border: 1px solid rgba(205, 214, 244, 0.2);
 }
 
 #workspaces {
-  margin-left: 7px;
+  background: rgba(49, 50, 68, 0.6);
+  border-radius: 8px;
+  margin: 6px 8px 6px 8px;
+  padding: 2px 6px;
+  border: 1px solid rgba(205, 214, 244, 0.1);
 }
 
 #workspaces button {
   all: initial;
-  padding: 2px 6px;
-  margin-right: 3px;
+  padding: 4px 8px;
+  margin: 2px 2px;
+  border-radius: 6px;
+  color: #cdd6f4;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+  background: rgba(116, 199, 236, 0.3);
+  color: #74c7ec;
+}
+
+#workspaces button.active {
+  background: rgba(116, 199, 236, 0.8);
+  color: #1e1e2e;
+}
+
+#clock {
+  background: rgba(166, 227, 161, 0.15);
+  color: #a6e3a1;
+  border-radius: 8px;
+  padding: 4px 12px;
+  margin: 6px 8px;
+  border: 1px solid rgba(166, 227, 161, 0.3);
+  font-weight: 600;
 }
 
 #custom-dropbox,
@@ -23,16 +59,59 @@
 #battery,
 #network,
 #bluetooth,
-#pulseaudio,
-#clock {
-  min-width: 12px;
-  margin-right: 13px;
+#pulseaudio {
+  background: rgba(49, 50, 68, 0.6);
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin: 6px 3px;
+  border: 1px solid rgba(205, 214, 244, 0.1);
+  transition: all 0.3s ease;
+}
+
+#custom-dropbox:hover,
+#cpu:hover,
+#power-profiles-daemon:hover,
+#custom-brightness:hover,
+#battery:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover {
+  background: rgba(49, 50, 68, 0.8);
+  border: 1px solid rgba(205, 214, 244, 0.3);
+}
+
+#battery.warning {
+  background: rgba(249, 226, 175, 0.2);
+  color: #f9e2af;
+  border: 1px solid rgba(249, 226, 175, 0.4);
+}
+
+#battery.critical {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+  border: 1px solid rgba(243, 139, 168, 0.4);
+}
+
+#network.disconnected {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+}
+
+#pulseaudio.muted {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
 }
 
 tooltip {
-  padding: 2px;
+  background: rgba(30, 30, 46, 0.95);
+  border: 1px solid rgba(205, 214, 244, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #cdd6f4;
 }
 
 tooltip label {
-  padding: 2px
+  color: #cdd6f4;
+  font-size: 12px;
 }
