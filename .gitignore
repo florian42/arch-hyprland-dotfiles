@@ -1,0 +1,16 @@
+nvim
+pulse
+systemd/user
+vivaldi/NativeMessagingHosts
+vivaldi-snapshot/NativeMessagingHosts
+google-chrome-unstable/NativeMessagingHosts
+google-chrome-beta/NativeMessagingHosts
+google-chrome/NativeMessagingHosts
+go/telemetry/local
+dconf
+chromium
+BraveSoftware/Brave-Browser/NativeMessagingHosts
+1Password
+microsoft-edge-dev/NativeMessagingHosts
+pavucontrol.ini
+gh/hosts.yml
