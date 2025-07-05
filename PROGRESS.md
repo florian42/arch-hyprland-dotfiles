@@ -65,15 +65,16 @@ Enhancing waybar configuration with 5 new cool features:
 - **Commit**: Ready
 
 #### Feature 5: Idle Inhibitor Toggle
-- **Status**: Pending
+- **Status**: ✅ Completed
 - **Goal**: Add toggle to prevent screen sleep
-- **Changes Needed**:
-  - Add idle_inhibitor module
-  - Configure toggle icons
-  - Add tooltip showing status
-  - Test inhibitor functionality
+- **Changes Made**:
+  - Added idle_inhibitor built-in module
+  - Configured toggle icons for active/inactive states
+  - Added helpful tooltips explaining behavior
+  - Click to toggle screen sleep prevention
+  - Updated CSS styling for consistency
 - **Files Modified**: `config`, `style.css`
-- **Commit**: Pending
+- **Commit**: Ready
 
 ## Todo List
 - [x] Create PROGRESS.md file with implementation plan
@@ -81,7 +82,7 @@ Enhancing waybar configuration with 5 new cool features:
 - [x] Feature 2: Add MPRIS media player controls
 - [x] Feature 3: Add custom Spotify now playing display (Skipped - MPRIS sufficient)
 - [x] Feature 4: Add clipboard manager integration
-- [ ] Feature 5: Add idle inhibitor toggle
+- [x] Feature 5: Add idle inhibitor toggle
 
 ## Dependencies Status
 - `playerctl`: ✅ Installed
