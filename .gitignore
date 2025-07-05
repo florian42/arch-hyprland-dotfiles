@@ -14,3 +14,18 @@ BraveSoftware/Brave-Browser/NativeMessagingHosts
 microsoft-edge-dev/NativeMessagingHosts
 pavucontrol.ini
 gh/hosts.yml
+
+# Clipboard history contains user data
+clipse/clipboard_history.json
+clipse/clipse.log
+
+# Temporary and cache files
+*.tmp
+*.log
+*.cache
+*~
+.DS_Store
+Thumbs.db
+
+# User-specific data
+spotify/

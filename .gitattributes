@@ -1,0 +1,23 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Explicitly declare files that should be treated as text
+*.conf text
+*.css text
+*.py text
+*.sh text
+*.md text
+*.yml text
+*.yaml text
+*.toml text
+*.json text
+
+# Explicitly declare files as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
