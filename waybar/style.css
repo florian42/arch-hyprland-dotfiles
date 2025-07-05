@@ -53,7 +53,6 @@ window#waybar {
 }
 
 #custom-dropbox,
-#cpu,
 #power-profiles-daemon,
 #backlight,
 #battery,
@@ -74,7 +73,6 @@ window#waybar {
 }
 
 #custom-dropbox:hover,
-#cpu:hover,
 #power-profiles-daemon:hover,
 #backlight:hover,
 #battery:hover,
