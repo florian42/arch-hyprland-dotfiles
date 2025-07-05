@@ -15,6 +15,7 @@
       "pulseaudio",
       "cpu",
       "power-profiles-daemon",
+      "custom/brightness",
       "battery"
     ],
     "hyprland/workspaces": {
@@ -111,5 +112,13 @@
         "balanced":     "󰊚",
         "performance":  "󰡴"
       }
+    },
+    "custom/brightness": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/brightness.sh",
+      "on-click": "~/.config/waybar/scripts/brightness-slider.sh",
+      "on-scroll-up": "brightnessctl set +5%",
+      "on-scroll-down": "brightnessctl set 5%-",
+      "interval": 3600
     },
 }
