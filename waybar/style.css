@@ -59,7 +59,8 @@ window#waybar {
 #battery,
 #network,
 #bluetooth,
-#pulseaudio {
+#pulseaudio,
+#custom-power-menu {
   background: rgba(49, 50, 68, 0.6);
   color: #cdd6f4;
   border-radius: 8px;
@@ -76,7 +77,8 @@ window#waybar {
 #battery:hover,
 #network:hover,
 #bluetooth:hover,
-#pulseaudio:hover {
+#pulseaudio:hover,
+#custom-power-menu:hover {
   background: rgba(49, 50, 68, 0.8);
   border: 1px solid rgba(205, 214, 244, 0.3);
 }

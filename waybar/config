@@ -16,7 +16,8 @@
       "cpu",
       "power-profiles-daemon",
       "custom/brightness",
-      "battery"
+      "battery",
+      "custom/power-menu"
     ],
     "hyprland/workspaces": {
       "on-click": "activate",
@@ -121,4 +122,9 @@
       "on-scroll-down": "brightnessctl set 5%-",
       "interval": 3600
     },
+    "custom/power-menu": {
+      "format": "⏻",
+      "on-click": "~/.config/waybar/scripts/power-menu.sh",
+      "tooltip-format": "Power Menu"
+    }
 }
