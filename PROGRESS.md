@@ -45,28 +45,24 @@ Enhancing waybar configuration with 5 new cool features:
 - **Commit**: Ready
 
 #### Feature 3: Custom Spotify Now Playing
-- **Status**: Pending
+- **Status**: ❌ Skipped
 - **Goal**: Show current Spotify track with controls
-- **Changes Needed**:
-  - Create `scripts/spotify.sh`
-  - Add `custom/spotify` module
-  - Configure click handlers
-  - Test with Spotify running/stopped
-- **Files Modified**: `config`, `scripts/spotify.sh`
-- **Dependencies**: `playerctl`
-- **Commit**: Pending
+- **Reason**: MPRIS module already provides excellent Spotify integration
+- **Decision**: Not needed - MPRIS covers all media player functionality
 
 #### Feature 4: Clipboard Manager Integration
-- **Status**: Pending
+- **Status**: ✅ Completed
 - **Goal**: Add clipboard status and picker integration
-- **Changes Needed**:
-  - Create `scripts/clipboard.sh`
-  - Add `custom/clipboard` module
-  - Set up cliphist integration
-  - Test clipboard functionality
-- **Files Modified**: `config`, `scripts/clipboard.sh`
-- **Dependencies**: `cliphist`
-- **Commit**: Pending
+- **Changes Made**:
+  - Created Python scripts for clipboard status and picker
+  - Added `custom/clipboard` module with clipse integration
+  - Left-click opens wofi clipboard history picker
+  - Right-click clears clipboard history
+  - Shows current clipboard content in tooltip
+  - Integrates with existing clipse daemon
+- **Files Modified**: `config`, `hyprland.conf`, `scripts/clipboard.py`, `scripts/clipboard-picker.py`
+- **Dependencies**: `clipse`, `wofi`
+- **Commit**: Ready
 
 #### Feature 5: Idle Inhibitor Toggle
 - **Status**: Pending
@@ -83,13 +79,13 @@ Enhancing waybar configuration with 5 new cool features:
 - [x] Create PROGRESS.md file with implementation plan
 - [x] Feature 1: Replace custom brightness with built-in backlight
 - [x] Feature 2: Add MPRIS media player controls
-- [ ] Feature 3: Add custom Spotify now playing display
-- [ ] Feature 4: Add clipboard manager integration
+- [x] Feature 3: Add custom Spotify now playing display (Skipped - MPRIS sufficient)
+- [x] Feature 4: Add clipboard manager integration
 - [ ] Feature 5: Add idle inhibitor toggle
 
 ## Dependencies Status
 - `playerctl`: ✅ Installed
-- `cliphist`: Not checked
+- `clipse`: ✅ Installed
 - `brightnessctl`: ✅ Installed
 
 ## Current Configuration
