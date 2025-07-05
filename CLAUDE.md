@@ -62,3 +62,9 @@
 - GTK CSS compatible (no backdrop-filter)
 - Consistent color variables across components
 - Responsive hover states for better UX
+
+## System Administration Rules
+- **NEVER execute sudo commands directly** - Always ask the user to run sudo commands and report back the results
+- Failed sudo attempts can lock user accounts via faillock
+- Always provide the exact command for the user to copy/paste
+- Let the user handle all privileged operations
