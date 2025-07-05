@@ -13,6 +13,7 @@
       "bluetooth",
       "network",
       "pulseaudio",
+      "mpris",
       "cpu",
       "power-profiles-daemon",
       "backlight",
@@ -113,6 +114,24 @@
         "balanced":     "󰊚",
         "performance":  "󰡴"
       }
+    },
+    "mpris": {
+      "format": "{player_icon} {dynamic}",
+      "format-paused": "{status_icon} <i>{dynamic}</i>",
+      "player-icons": {
+        "default": "▶",
+        "spotify": "",
+        "firefox": "",
+        "chrome": "",
+        "vlc": "󰕼"
+      },
+      "status-icons": {
+        "paused": "⏸",
+        "playing": "▶",
+        "stopped": "⏹"
+      },
+      "ignored-players": ["firefox"],
+      "tooltip-format": "{player}: {artist} - {title}"
     },
     "backlight": {
       "format": "{percent}% {icon}",

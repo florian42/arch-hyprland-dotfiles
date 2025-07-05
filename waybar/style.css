@@ -60,6 +60,7 @@ window#waybar {
 #network,
 #bluetooth,
 #pulseaudio,
+#mpris,
 #custom-power-menu {
   background: rgba(49, 50, 68, 0.6);
   color: #cdd6f4;
@@ -78,6 +79,7 @@ window#waybar {
 #network:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
+#mpris:hover,
 #custom-power-menu:hover {
   background: rgba(49, 50, 68, 0.8);
   border: 1px solid rgba(205, 214, 244, 0.3);

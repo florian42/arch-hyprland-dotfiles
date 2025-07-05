@@ -33,15 +33,16 @@ Enhancing waybar configuration with 5 new cool features:
 - **Commit**: Ready
 
 #### Feature 2: MPRIS Media Player Controls
-- **Status**: Pending
+- **Status**: ✅ Completed
 - **Goal**: Add universal media player controls
-- **Changes Needed**:
-  - Add mpris module to config
-  - Configure player icons and status display
-  - Add to modules-right array
-  - Test with various media players
+- **Changes Made**:
+  - Added mpris module to config with player icons
+  - Configured status icons for playing/paused/stopped
+  - Added support for Spotify, Firefox, Chrome, VLC
+  - Updated CSS styling for #mpris
+  - Tested with media players - working perfectly!
 - **Files Modified**: `config`, `style.css`
-- **Commit**: Pending
+- **Commit**: Ready
 
 #### Feature 3: Custom Spotify Now Playing
 - **Status**: Pending
@@ -81,15 +82,15 @@ Enhancing waybar configuration with 5 new cool features:
 ## Todo List
 - [x] Create PROGRESS.md file with implementation plan
 - [x] Feature 1: Replace custom brightness with built-in backlight
-- [ ] Feature 2: Add MPRIS media player controls
+- [x] Feature 2: Add MPRIS media player controls
 - [ ] Feature 3: Add custom Spotify now playing display
 - [ ] Feature 4: Add clipboard manager integration
 - [ ] Feature 5: Add idle inhibitor toggle
 
 ## Dependencies Status
-- `playerctl`: Not checked
+- `playerctl`: ✅ Installed
 - `cliphist`: Not checked
-- `brightnessctl`: Not checked
+- `brightnessctl`: ✅ Installed
 
 ## Current Configuration
 - **Waybar Config**: `/home/flo/.config/waybar/config`
