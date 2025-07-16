@@ -19,6 +19,7 @@
       "network", 
       "pulseaudio",
       "battery",
+      "custom/keyboard-toggle",
       "custom/power-menu"
     ],
     "hyprland/workspaces": {
@@ -153,6 +154,13 @@
       "on-scroll-up": "brightnessctl set +5%",
       "on-scroll-down": "brightnessctl set 5%-",
       "tooltip-format": "Brightness: {percent}%"
+    },
+    "custom/keyboard-toggle": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/keyboard-toggle.sh status",
+      "interval": 2,
+      "on-click": "~/.config/waybar/scripts/keyboard-toggle.sh toggle",
+      "tooltip-format": "Click to toggle keyboard layout"
     },
     "custom/power-menu": {
       "format": "⏻",
