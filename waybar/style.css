@@ -1,0 +1,43 @@
+@define-color foreground #cdd6f4;
+@define-color background #181824;
+
+* {
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: CaskaydiaMono Nerd Font Propo;
+  font-size: 12px;
+}
+
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    min-width: 12px;
+    padding: 0px;
+}
+
+#power-profiles-daemon {
+    padding-right: 0px;
+}
+
+tooltip {
+  padding: 2px;
+}
