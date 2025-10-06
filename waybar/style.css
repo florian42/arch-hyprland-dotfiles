@@ -10,6 +10,7 @@
   min-height: 0;
   font-family: CaskaydiaMono Nerd Font Propo;
   font-size: 12px;
+  padding: 4px;
 }
 
 
@@ -29,14 +30,20 @@
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+#custom-power,
 #mpd {
     min-width: 12px;
-    padding: 0px;
+    padding: 2px;
 }
+
 
 #power-profiles-daemon {
     padding-right: 0px;
 }
+#custom-power {
+    margin-right: -8px;
+}
+
 
 tooltip {
   padding: 2px;
