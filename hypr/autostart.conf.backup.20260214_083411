@@ -1,0 +1,6 @@
+exec-once = uwsm app -- hypridle
+exec-once = uwsm app -- waybar
+exec-once = uwsm app -- mako
+exec-once = uwsm app -- swaybg -i ~/Pictures/Wallpaper/3--Milad-Fakurian-Abstract-Purple-Blue.jpg -m fill
+exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = wl-clip-persist --clipboard regular --all-mime-type-regex '^(?!x-kde-passwordManagerHint).+'
