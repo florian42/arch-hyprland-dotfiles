@@ -8,7 +8,6 @@
     // Choose the order of the modules
     "modules-left": [
         "clock",
-        "power-profiles-daemon",
         "pulseaudio",
         "backlight"
     ],
@@ -114,17 +113,6 @@
         "critical": 10
         }
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     "network": {
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
         "format" : "{icon}",
@@ -184,14 +172,14 @@
     "hyprland/language": {
         "format": "{}",
         "format-de": "DE",
-        "format-en": "US"
+        "format-us": "US"
     },
     "bluetooth": {
         "format": "",
         "format-disabled": "󰂲",
         "format-connected": "",
         "tooltip-format": "Devices connected: {num_connections}",
-        "on-click": "blueberry"
+        "on-click": "blueman-manager"
     },
     "hyprland/workspaces": {
         "on-click": "activate",
