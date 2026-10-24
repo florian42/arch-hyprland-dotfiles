@@ -1,7 +1,7 @@
 -- hyprland.start fires once per session, the equivalent of exec-once.
 hl.on("hyprland.start", function()
     hl.exec_cmd("hypridle")
-    hl.exec_cmd("~/.config/waybar/hyprbar.py")  -- supervises waybar (autohide + workspaces)
+    hl.exec_cmd("systemctl --user restart hyprbar")  -- waybar supervisor; the unit restarts it if it dies
     hl.exec_cmd("mako")
     hl.exec_cmd("easyeffects --service-mode --hide-window")
     hl.exec_cmd("swaybg -i ~/Pictures/Wallpaper/3--Milad-Fakurian-Abstract-Purple-Blue.jpg -m fill")

@@ -6,3 +6,8 @@
 !/waybar/
 !/wofi/
 !/xdg-desktop-portal/
+!/systemd/
+/systemd/*
+!/systemd/user/
+/systemd/user/*
+!/systemd/user/hyprbar.service

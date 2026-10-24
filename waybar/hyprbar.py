@@ -291,6 +291,7 @@ def main():
                 bar.track(cursor, geo[name])
     except (ConnectionError, FileNotFoundError, socket.timeout) as e:
         print(f"hyprbar: lost Hyprland IPC: {e}", file=sys.stderr)
+        sys.exit(1)  # nonzero so hyprbar.service restarts us; a stall during a modeset is not Hyprland exiting
     finally:
         for bar in bars.values():
             bar.stop()
