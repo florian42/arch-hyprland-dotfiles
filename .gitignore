@@ -2,12 +2,14 @@
 !/.gitignore
 !/fontconfig/
 !/hypr/
+/hypr/noctalia.lua
 !/lazygit/
-!/waybar/
-!/wofi/
+!/noctalia/
+!/qt6ct/
+/qt6ct/colors/
 !/xdg-desktop-portal/
 !/systemd/
 /systemd/*
 !/systemd/user/
 /systemd/user/*
-!/systemd/user/hyprbar.service
+!/systemd/user/noctalia.service

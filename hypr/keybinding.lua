@@ -2,8 +2,8 @@
 
 local terminal    = "ghostty"
 local fileManager = "nautilus"
-local menu        = "wofi --show drun"
 local browser     = "firefox --new-window"
+local noctalia    = "noctalia msg "
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
@@ -12,13 +12,14 @@ hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exit())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(noctalia .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())           -- dwindle
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))     -- dwindle
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("makoctl dismiss --all"))
--- Peek at waybar for a few seconds; press again to hide it (see ~/.config/waybar/hyprbar.py)
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd([[kill -USR1 "$(cat "$XDG_RUNTIME_DIR/hyprbar/pid")"]]))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(noctalia .. "notification-clear-active"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(noctalia .. "bar-toggle"))
+-- Dark/light: noctalia rewrites GTK, Qt, Ghostty and border colors (see ~/.config/noctalia/config.toml)
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(noctalia .. "theme-mode-toggle"))
 
 local directions = { left = "l", right = "r", up = "u", down = "d" }
 for key, dir in pairs(directions) do
@@ -55,7 +56,7 @@ hl.bind("PRINT",               hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind("SHIFT + PRINT",       hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- Clipboard history picker
-hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.exec_cmd("cliphist list | noctalia dmenu -p Clipboard | cliphist decode | wl-copy"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 local lockedRepeat = { locked = true, repeating = true }

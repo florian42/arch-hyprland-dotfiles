@@ -1,8 +1,0 @@
-[Unit]
-Description=Waybar supervisor for Hyprland (autohide + workspaces)
-
-[Service]
-ExecStart=%h/.config/waybar/hyprbar.py
-# Exits 0 when Hyprland goes away, nonzero on a crash or IPC stall.
-Restart=on-failure
-RestartSec=2

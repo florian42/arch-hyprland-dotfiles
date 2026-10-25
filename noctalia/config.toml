@@ -1,0 +1,27 @@
+# noctalia: bar, notifications, launcher, wallpaper. Runs as noctalia.service.
+# Runtime choices (theme mode, wallpaper picks) persist in
+# ~/.local/state/noctalia/settings.toml and override this file.
+
+# Catppuccin: Mocha in dark mode, Latte in light. SUPER+SHIFT+T toggles.
+[theme]
+mode = "dark"
+source = "builtin"
+builtin = "Catppuccin"
+sync_color_scheme = true # gsettings color-scheme, which GTK4, Electron and browsers follow
+
+# Each template rewrites one app's colors on every mode change. qt needs
+# QT_QPA_PLATFORMTHEME=qt6ct (envs.lua) and qt6ct/qt6ct.conf pointing at its output.
+[theme.templates]
+enable_builtin_templates = true
+builtin_ids = ["gtk3", "gtk4", "ghostty", "hyprland", "qt"]
+
+[shell]
+# Apps started from the launcher get their own transient unit, so restarting
+# noctalia.service doesn't kill them.
+launch_apps_as_systemd_services = true
+# cliphist keeps the history: wl-paste --watch marks 1Password copies as
+# sensitive and cliphist skips them. noctalia's own history has no such check.
+clipboard_enabled = false
+
+[wallpaper.default]
+path = "/home/flo/Pictures/Wallpaper/3--Milad-Fakurian-Abstract-Purple-Blue.jpg"

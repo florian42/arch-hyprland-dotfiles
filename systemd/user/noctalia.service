@@ -1,0 +1,7 @@
+[Unit]
+Description=noctalia desktop shell (bar, notifications, launcher, wallpaper)
+
+[Service]
+ExecStart=/usr/bin/noctalia
+Restart=on-failure
+RestartSec=2

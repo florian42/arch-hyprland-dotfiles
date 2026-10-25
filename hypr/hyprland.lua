@@ -134,12 +134,7 @@ hl.config({
         gaps_in  = 5,
         gaps_out = 0,
 
-        border_size = 2,
-
-        col = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
+        border_size = 2, -- colors come from noctalia, see the end of this file
 
         -- Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false,
@@ -248,3 +243,8 @@ hl.gesture({
     direction = "horizontal",
     action    = "workspace",
 })
+
+-- Border and group colors for the current dark/light mode. noctalia rewrites
+-- noctalia.lua (untracked) on every mode change, and Hyprland reloads on the
+-- write. Its template appends this line unless it finds require("noctalia").
+require("noctalia").apply_theme()

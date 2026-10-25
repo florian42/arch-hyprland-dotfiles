@@ -56,11 +56,16 @@ hl.window_rule({
     no_focus = true,
 })
 
--- Waybar (started by ~/.config/waybar/hyprbar.py): blur its translucent pill
--- and slide it in from the left when the hot corner reveals it.
+-- noctalia surfaces: blur their translucent backgrounds. noctalia animates
+-- them itself, so Hyprland's layer animation is off.
 hl.layer_rule({
-    match        = { namespace = "^waybar$" },
+    name         = "noctalia",
+    match        = { namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$" },
+    no_anim      = true,
+    ignore_alpha = 0.5,
     blur         = true,
-    ignore_alpha = 0.3,
-    animation    = "slide left",
+    blur_popups  = true,
 })
+
+-- noctalia settings window
+hl.window_rule({ match = { class = "dev.noctalia.Noctalia" }, float = true, size = { 1080, 920 } })
