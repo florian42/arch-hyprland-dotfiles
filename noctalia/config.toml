@@ -23,5 +23,22 @@ launch_apps_as_systemd_services = true
 # sensitive and cliphist skips them. noctalia's own history has no such check.
 clipboard_enabled = false
 
+# Default end lane, with the keyboard layout (de/us, SUPER+Space) in place of
+# the clipboard widget, which has nothing to show while clipboard_enabled is off.
+[bar.default]
+end = [
+    "media",
+    "tray",
+    "notifications",
+    "keyboard_layout",
+    "network",
+    "bluetooth",
+    "volume",
+    "brightness",
+    "battery",
+    "control-center",
+    "session",
+]
+
 [wallpaper.default]
 path = "/home/flo/Pictures/Wallpaper/3--Milad-Fakurian-Abstract-Purple-Blue.jpg"
