@@ -72,15 +72,4 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
--- Lid switch: turn the laptop panel off/on without suspending; the MateView
--- stays on so the lid can be closed while docked.
--- dpms is deferred through a timer because dispatching it straight from a
--- keybind is undefined behavior (see the Dispatchers wiki page).
-local function setDisplayPower(action)
-    hl.timer(function()
-        hl.dispatch(hl.dsp.dpms({ monitor = "eDP-1", action = action }))
-    end, { timeout = 500, type = "oneshot" })
-end
-
-hl.bind("switch:on:Lid Switch",  function() setDisplayPower("disable") end, { locked = true })
-hl.bind("switch:off:Lid Switch", function() setDisplayPower("enable") end,  { locked = true })
+-- Lid switch: see the clamshell section in hyprland.lua.

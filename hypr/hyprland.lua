@@ -20,27 +20,108 @@ hl.monitor({
     scale    = "auto",
 })
 
+-- Positions are explicit: auto placement depends on which monitor arrived
+-- first and sticks across reloads, so a panel disable/enable cycle swapped
+-- the two sides.
+
 -- Laptop panel (1920x1080, 310mm wide, ~157 PPI). auto picks 1.5 -> 1280x720
 -- logical, which feels cramped. 1.25 -> 1536x864 logical. Clean stops for
 -- this panel: 1.2 (1600x900), 1.25, 1.333 (1440x810), 1.5.
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "preferred",
-    position = "auto",
-    scale    = 1.25,
-})
+local panel = "eDP-1"
+local function panelRule(disabled)
+    return {
+        output   = panel,
+        mode     = "preferred",
+        position = "0x0",
+        scale    = 1.25,
+        disabled = disabled, -- rules merge, so enabling needs an explicit false
+    }
+end
 
 -- Huawei MateView (28.2", 3840x2560 3:2, ~163 PPI).
 -- Integer scale 2 -> 1920x1280 logical, ~81 effective PPI. Hyprland only
--- accepts clean divisors here: the stops are 1.6, 1.667 and 2. auto-right
--- keeps it right of the laptop panel whatever eDP-1 is scaled to.
+-- accepts clean divisors here: the stops are 1.6, 1.667 and 2. x = the
+-- panel's logical width (1920 / 1.25), so it sits right of the panel.
 local mateview = "desc:Huawei Technologies Co. Inc. MateView"
 hl.monitor({
     output   = mateview,
     mode     = "3840x2560@60",
-    position = "auto-right",
+    position = "1536x0",
     scale    = 2,
 })
+
+-- Workspace layout: six fixed workspaces, 1-3 on the laptop panel and 4-6 on
+-- the MateView. persistent keeps each one alive while empty so the set
+-- never drifts; default marks the one each monitor falls back to. While the
+-- panel is out of the layout 1-3 move to the MateView too: a persistent
+-- workspace ruled onto a disabled monitor is recreated on no monitor at all.
+local function assignWorkspaces(panelOn)
+    for i = 1, 6 do
+        hl.workspace_rule({
+            workspace  = tostring(i),
+            monitor    = (i <= 3 and panelOn) and panel or mateview,
+            default    = i == 4 or (i == 1 and panelOn),
+            persistent = true,
+        })
+    end
+end
+
+local function applyPanel(disabled)
+    hl.monitor(panelRule(disabled))
+    assignWorkspaces(not disabled)
+end
+
+-- Clamshell. Lid closed with another screen connected: take the panel out of
+-- the layout, so workspaces 1-3 move to that screen. Lid closed with nothing
+-- else: keep the panel as a dark output so the session never has zero
+-- monitors. logind ignores the lid (HandleLidSwitch*=ignore), so no suspend.
+local function lidClosed()
+    local f = io.open("/proc/acpi/button/lid/LID/state")
+    if not f then return false end
+    local closed = f:read("a"):find("closed") ~= nil
+    f:close()
+    return closed
+end
+
+local function enabledOutputs()
+    local names = {}
+    for _, m in ipairs(hl.get_monitors()) do names[m.name] = true end
+    return names
+end
+
+local function panelShouldBeDisabled(outputs)
+    if not lidClosed() then return false end
+    for name in pairs(outputs) do
+        if name ~= panel then return true end
+    end
+    return false
+end
+
+applyPanel(panelShouldBeDisabled(enabledOutputs()))
+
+-- Level-triggered: every trigger recomputes the target state from the lid and
+-- the connected outputs, so a missed or repeated event can't leave it wrong.
+local function syncPanel()
+    local outputs = enabledOutputs()
+    local disable = panelShouldBeDisabled(outputs)
+    if disable ~= not outputs[panel] then
+        applyPanel(disable)
+    end
+    if not disable then
+        hl.dispatch(hl.dsp.dpms({ monitor = panel, action = lidClosed() and "disable" or "enable" }))
+    end
+end
+
+-- Deferred: dpms straight from a keybind is undefined behavior (see the
+-- Dispatchers wiki page), and the lid state file needs a moment to update.
+local function scheduleSyncPanel()
+    hl.timer(syncPanel, { timeout = 500, type = "oneshot" })
+end
+
+hl.bind("switch:on:Lid Switch",  scheduleSyncPanel, { locked = true })
+hl.bind("switch:off:Lid Switch", scheduleSyncPanel, { locked = true })
+hl.on("monitor.added",   scheduleSyncPanel)
+hl.on("monitor.removed", scheduleSyncPanel)
 
 
 -----------------------
@@ -136,23 +217,6 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "a
 hl.animation({ leaf = "workspaces",    enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesIn",  enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-
-
---------------------
----- WORKSPACES ----
---------------------
-
--- Workspace layout: six fixed workspaces, 1-3 on the laptop panel and 4-6 on
--- the MateView. persistent keeps each one alive while empty so the set
--- never drifts; default marks the one each monitor falls back to.
-for i = 1, 6 do
-    hl.workspace_rule({
-        workspace  = tostring(i),
-        monitor    = i <= 3 and "eDP-1" or mateview,
-        default    = i == 1 or i == 4,
-        persistent = true,
-    })
-end
 
 
 ---------------
